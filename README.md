@@ -1,1 +1,1 @@
-# tomcat-app
+# A simple tomcat web app
