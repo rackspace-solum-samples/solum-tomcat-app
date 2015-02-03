@@ -9,16 +9,23 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "MyServlet", urlPatterns = {"/hello"})
+@WebServlet(name = "MyServlet", urlPatterns = {"/"})
 public class HelloServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        ServletOutputStream out = resp.getOutputStream();
-        out.write("java app".getBytes());
-        out.flush();
-        out.close();
+      String port = System.getenv("PORT");
+      String user = System.getenv("user");
+      String password = System.getenv("password");
+      String key = System.getenv("key");
+
+      req.setAttribute("port", port);
+      req.setAttribute("user", user);
+      req.setAttribute("password", password);
+      req.setAttribute("key", key);
+
+      req.getRequestDispatcher("/home.jsp").forward(req, resp);
     }
     
 }
