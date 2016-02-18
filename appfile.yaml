@@ -1,11 +1,11 @@
 version: 1
-name: java-tomcat
+name: tomcat-app
 description: Java Tomcat App
-artifacts:
-- name: tomcat-app
-  content:
-    href: https://github.com/rackspace-solum-samples/tomcat-app.git
-  language_pack: java7
-  unittest_cmd: mvn test
+language_pack: java7
+source:
+  repository: https://github.com/rackspace-solum-samples/tomcat-app.git
+workflow_config:
+  test_cmd: mvn test
   run_cmd: ./run
-  ports: 80
+ports:
+ - 80
